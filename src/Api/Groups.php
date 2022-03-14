@@ -107,4 +107,21 @@ class Groups extends ApiAbstract {
 
         return $response['body'];
     }
+
+    /**
+     * Add assign subscriber to group
+     *
+     * @param int   $groupId
+     * @param array $subscriberData
+     * @param array $params
+     * @return [type]
+     */
+    public function assignSubscriber($groupName, $subscriberId)
+    {
+        $endpoint = $this->endpoint . '/' . $groupName . '/subscribers/' . $subscriberId;
+        $response = $this->restClient->post($endpoint, ['groupName' => $groupName]);
+
+        return $response['body'];
+    }
+
 }
